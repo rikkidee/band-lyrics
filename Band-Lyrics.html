@@ -8,19 +8,87 @@
 <title>Setlist Lyrics</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100vh; height: 100dvh; overflow: hidden; background: #111; color: #e8e8e8; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; -webkit-text-size-adjust: 100%; }
-  #app { display: flex; flex-direction: column; height: 100vh; height: 100dvh; padding: 8px 12px; }
-  #controls { display: flex; align-items: center; gap: 6px; flex-shrink: 0; padding-bottom: 6px; }
-  #controls button { background: #333; color: #e8e8e8; border: none; border-radius: 6px; padding: 10px 16px; font-size: 18px; cursor: pointer; -webkit-tap-highlight-color: transparent; flex-shrink: 0; }
+  html, body {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background: #111;
+    color: #e8e8e8;
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    padding: 8px 12px;
+  }
+  #controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+  }
+  #controls button {
+    background: #333;
+    color: #e8e8e8;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+  }
   #controls button:active { background: #555; }
-  .size-btn { padding: 10px 14px !important; font-size: 17px !important; font-weight: 700; min-width: 44px; text-align: center; }
-  #songSelect { flex: 1; background: #222; color: #e8e8e8; border: 1px solid #444; border-radius: 6px; padding: 10px 10px; font-size: 16px; -webkit-appearance: none; appearance: none; }
-  #header { text-align: center; flex-shrink: 0; padding-bottom: 4px; }
-  #songTitle { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
-  #songArtist { font-size: 14px; color: #888; font-weight: 400; margin-top: 1px; }
-  #lyricsContainer { flex: 1; overflow: hidden; position: relative; }
-  #lyrics { position: absolute; top: 0; left: 0; right: 0; bottom: 0; line-height: 1.35; white-space: pre-wrap; word-wrap: break-word; }
-  #lyrics.two-col { column-count: 2; column-gap: 28px; column-rule: 1px solid #333; }
+  .size-btn { padding: 8px 10px !important; font-size: 14px !important; min-width: 36px; text-align: center; }
+  #songSelect {
+    flex: 1;
+    background: #222;
+    color: #e8e8e8;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 16px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  #header {
+    text-align: center;
+    flex-shrink: 0;
+    padding-bottom: 4px;
+  }
+  #songTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  #songArtist {
+    font-size: 14px;
+    color: #888;
+    font-weight: 400;
+    margin-top: 1px;
+  }
+  #lyricsContainer {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  #lyrics {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    line-height: 1.35;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  #lyrics.two-col {
+    column-count: 2;
+    column-gap: 28px;
+    column-rule: 1px solid #333;
+  }
   .section-break { height: 0.6em; }
 </style>
 </head>
@@ -58,146 +126,93 @@ const songs = [
   {title:"Taxman",artist:"The Beatles",lyrics:"One, two, three, four\nOne, two (one, two, three, four)\n\nLet me tell you how it will be\nThere's one for you, nineteen for me\n'Cause I'm the taxman\nYeah, I'm the taxman\n\nShould five percent appear too small\nBe thankful I don't take it all\n'Cause I'm the taxman\nYeah, I'm the taxman\n\nI'll tax the street\n(If you try to sit, sit) I'll tax your seat\n(If you get too cold, cold) I'll tax the heat\n(If you take a walk, walk) I'll tax your feet\n(Taxman)\n\n'Cause I'm the taxman\nYeah, I'm the taxman\n\nDon't ask me what I want it for\n(Ah, ah, Mr. Wilson)\nIf you don't want to pay some more\n(Ah, ah, Mr. Heath)\n\n'Cause I'm the taxman\nYeah, I'm the taxman\n\nNow my advice for those who die (taxman)\nDeclare the pennies on your eyes (taxman)\n'Cause I'm the taxman\nYeah, I'm the taxman\nAnd you're working for no one but me (taxman)"},
   {title:"Just What I Needed",artist:"The Cars",lyrics:"I don't mind you comin' here\nWastin' all my time\n'Cause when you're standin' oh so near\nI kinda lose my mind\n\nIt's not the perfume that you wear\nIt's not the ribbons in your hair\nI don't mind you comin' here\nAnd wastin' all my time\n\nI don't mind you hangin' out\nAnd talkin' in your sleep\nIt doesn't matter where you've been\nAs long as it was deep, yeah\n\nYou always knew to wear it well and\nYou look so fancy, I can tell\nAnd I don't mind you hangin' out\nAnd talkin' in your sleep\n\nI guess you're just what I needed (just what I needed)\nI needed someone to feed\nI guess you're just what I needed (just what I needed)\nI needed someone to bleed\n\nI don't mind you comin' here\nAnd wastin' all my time, time\n'Cause when you're standin' oh so near\nI kinda lose my mind, yeah\n\nIt's not the perfume that you wear\nIt's not the ribbons in your hair\nAnd I don't mind you comin' here\nAnd wastin' all my time\n\nI guess you're just what I needed (just what I needed)\nI needed someone to feed\nI guess you're just what I needed (just what I needed)\nI needed someone to bleed\n\nYou're just what I needed\nYou're just what I needed\nYou're just what I needed, yeah, yeah"},
   {title:"Take Me Out",artist:"Franz Ferdinand",lyrics:"So if you're lonely\nYou know I'm here waiting for you\nI'm just a cross-hair\nI'm just a shot away from you\n\nAnd if you leave here\nYou leave me broken, shattered I lie\nI'm just a cross-hair\nI'm just a shot, then we can die\n\nAh-ah-ah\nI know I won't be leaving here\nWith you\n\nI say, \"Don't you know?\"\nYou say, \"You don't know\"\nI say\n\"Take me out\"\n\nI say, \"You don't show\"\nDon't move, time is slow\nI say\n\"Take me out\"\n\nI say, \"You don't know\"\nYou say, \"You don't know\"\nI say\n\"Take me out\"\n\nIf I move, this could die\nIf eyes move, this could die\nI want you\nTo take me out\n\nI know, I won't be leaving here (with you)\nOh, I know I won't be leaving here\nI know, I won't be leaving here (with you)\nI know, I won't be leaving here\nWith you\n\nI say, \"Don't you know?\"\nYou say, \"You don't know\"\nI say\n\"Take me out\"\n\nIf I wane, this could die\nIf I wait, this could die\nI want you\nTo take me out\n\nIf I move, this could die\nEyes move, this can die\nCome on\nTake me out\n\nI know, I won't be leaving here (with you)\nOh, I know I won't be leaving here\nI know, I won't be leaving here (with you)\nI know, I won't be leaving here\nWith you"},
-  {title:"La Grange",artist:"ZZ Top",lyrics:"Rumor spreadin' 'round in that Texas town\n'Bout that shack outside La Grange\nAnd you know what I'm talkin' about\n\nJust let me know, if you wanna go\nTo that home out on the range\nThey got a lot of nice girls\n\nHave mercy\nA-haw, haw, haw, haw\nA-haw, haw, haw, haw\n\nWell, I hear it's fine\nIf you got the time\nAnd intent to get yourself in\nA-hm, hm\n\nAnd I hear it's fine\nAlmost every night\nBut now I might be mistaken\nHm, hm, hm"}
-  {
-    title: "Keep Your Hands to Yourself",
-    artist: "The Georgia Satellites",
-    lyrics: "I got a little change in my pocket goin' jing-a-ling-a-ling\n\
-Wants to call you on the telephone baby, a-give you a ring\n\
-But each time we talk, I get the same old thing\n\
-Always no hug-ee no kiss-ee until I get a weddin' ring\n\
-My honey my baby, don't put my love upon no shelf\n\
-She said don't hand me no lines and keep your hands to yourself\n\
-\n\
-B-B-B-baby baby baby why you wan' treat me this way\n\
-You know I'm still your lover boy I still feel the same way\n\
-That's when she told me a story, 'bout free milk and a cow\n\
-And said no hug-ee no kiss-ee until I get a weddin' vow\n\
-My honey my baby, don't put my love upon no shelf\n\
-She said don't hand me no lines and keep your hands to yourself\n\
-\n\
-Hold it here\n\
-\n\
-See I wanted her real bad, and I was about to give in\n\
-But that's when she started talking about true love,\n\
-Started talking about sin\n\
-And I said, honey I'll live with you for the rest of my life,\n\
-She said no hug-ee no kiss-ee until you make me your wife-a\n\
-My honey my baby, don't put my love upon no shelf\n\
-She said don't hand me no lines and keep your hands to yourself"
-}
- {
-    title: "New Orleans Is Sinking",
-    artist: "The Tragically Hip",
-    lyrics: "Alright\n\
-\n\
-Bourbon blues on the street, loose and complete\n\
-Under skies, so smokey blue green\n\
-I can't forsake a dixie dead-shake\n\
-So we danced the sidewalk clean\n\
-My memory is muddy, what's this river that I'm in?\n\
-New Orleans is sinking, man, and I don't wanna swim\n\
-\n\
-Colonel Tom, what's wrong, what's going on?\n\
-Can't tie yourself up for a deal\n\
-He said, \"Hey north, you're south, shut you big mouth\n\
-You gotta do what you feel is real\"\n\
-Ain't got no picture postcards, ain't got no souvenirs\n\
-My baby, she don't know me when I'm thinking bout those years\n\
-\n\
-Pale as a light bulb hanging on a wire\n\
-Sucking up to someone just to stoke the fire\n\
-Picking out the highlights of the scenery\n\
-Saw a little cloud that looked a little like me\n\
-\n\
-I had my hands in the river, my feet back up on the banks\n\
-Looked up to the Lord above and said, \"Hey, man thanks\"\n\
-Sometimes I feel so good, I gotta scream\n\
-She said, \"Gordie baby, I know exactly what you mean\"\n\
-She said, she said\n\
-I swear to God she said\n\
-\n\
-Oh no, no yeah\n\
-\n\
-My memory is muddy, what's this river that I'm in?\n\
-New Orleans is sinking, man, and I don't wanna swim\n\
-Swim"
-}
- {
-    title: "Rock This Town",
-    artist: "Stray Cats",
-    lyrics: "Well, my baby and me went out late Saturday night\n\
-I had my hair piled high and my baby just looked so right\n\
-Well, pick you up at ten, gotta have you home at two\n\
-Mama don't know what I catched off of you\n\
-But that's all right 'cause we're looking as cool as can be\n\
-\n\
-Well, we found a little place that really didn't look that bad\n\
-I had a whisky on the rocks\n\
-And change of a dollar for the jukebox\n\
-Well, I put the cold rock into that can\n\
-But all they played was disco, man\n\
-Come on, baby, baby, let's get out of here right away\n\
-\n\
-We're gonna rock this town\n\
-Rock it inside out\n\
-We're gonna rock this town\n\
-Make'em scream and shout\n\
-Let's rock, rock, rock, man, rock\n\
-We're gonna rock till you pop\n\
-We're gonna rock till you drop\n\
-We're gonna rock this town\n\
-Rock it inside out\n\
-\n\
-Well, we're having a ball just 'a bopping on the big dance floor\n\
-Well, there's a real square cat, he looks a 1974\n\
-Well, he looked at me once, he looked at me twice\n\
-Look at me again and there's gonna be fight\n\
-We're gonna rock this town\n\
-We're gonna rip this place apart\n\
-\n\
-We're gonna rock this town\n\
-Rock it inside out\n\
-We're gonna rock this town\n\
-Make'em scream and shout\n\
-Let's rock, rock, rock, man, rock\n\
-We're gonna rock till you pop\n\
-We're gonna rock till you drop\n\
-We're gonna rock this town\n\
-Rock this place apart\n\
-\n\
-We're gonna rock this town\n\
-Rock it inside out\n\
-We're gonna rock this town\n\
-Make'em scream and shout\n\
-Let's rock, rock, rock, man, rock\n\
-We're gonna rock till you pop\n\
-We're gonna rock till you drop\n\
-We're gonna rock this town\n\
-Rock it inside out\n\
-We're gonna rock this town\n\
-Rock it inside out\n\
-We're gonna rock this town\n\
-Rock it inside out"
-}
+  {title:"La Grange",artist:"ZZ Top",lyrics:"Rumor spreadin' 'round in that Texas town\n'Bout that shack outside La Grange\nAnd you know what I'm talkin' about\n\nJust let me know, if you wanna go\nTo that home out on the range\nThey got a lot of nice girls\n\nHave mercy\nA-haw, haw, haw, haw\nA-haw, haw, haw, haw\n\nWell, I hear it's fine\nIf you got the time\nAnd intent to get yourself in\nA-hm, hm\n\nAnd I hear it's fine\nAlmost every night\nBut now I might be mistaken\nHm, hm, hm"},
+  {title:"Rock This Town",artist:"Stray Cats",lyrics:"[Verse 1 lyrics here]\n\n[Chorus lyrics here]\n\n[Verse 2 lyrics here]\n\n[Chorus lyrics here]\n\n[Bridge lyrics here]\n\n[Chorus lyrics here]"},
+  {title:"New Orleans Is Sinking",artist:"Tragically Hip",lyrics:"[Verse 1 lyrics here]\n\n[Chorus lyrics here]\n\n[Verse 2 lyrics here]\n\n[Chorus lyrics here]\n\n[Verse 3 lyrics here]\n\n[Chorus lyrics here]\n\n[Outro lyrics here]"},
+  {title:"Keep Your Hands to Yourself",artist:"Georgia Satellites",lyrics:"[Verse 1 lyrics here]\n\n[Chorus lyrics here]\n\n[Verse 2 lyrics here]\n\n[Chorus lyrics here]\n\n[Verse 3 lyrics here]\n\n[Chorus lyrics here]"}
 ];
 
-const select=document.getElementById('songSelect');songs.forEach((song,i)=>{const opt=document.createElement('option');opt.value=i;opt.textContent=(i+1)+'. '+song.title+' \u2014 '+song.artist;select.appendChild(opt)});
+const select = document.getElementById('songSelect');
+songs.forEach((song, i) => {
+  const opt = document.createElement('option');
+  opt.value = i;
+  opt.textContent = (i + 1) + '. ' + song.title + ' \u2014 ' + song.artist;
+  select.appendChild(opt);
+});
 
-let currentIndex=0;
-let sizeOffset=0;
+let currentIndex = 0;
+let sizeOffset = 0;
 
-function navigate(dir){const newIndex=currentIndex+dir;if(newIndex>=0&&newIndex<songs.length){select.value=newIndex;showSong(newIndex)}}
+function navigate(dir) {
+  const newIndex = currentIndex + dir;
+  if (newIndex >= 0 && newIndex < songs.length) {
+    select.value = newIndex;
+    showSong(newIndex);
+  }
+}
 
-function adjustSize(delta){sizeOffset+=delta;const lyricsEl=document.getElementById('lyrics');const current=parseInt(lyricsEl.style.fontSize)||20;const newSize=Math.max(8,Math.min(60,current+delta));lyricsEl.style.fontSize=newSize+'px';}
+function adjustSize(delta) {
+  sizeOffset += delta;
+  const lyricsEl = document.getElementById('lyrics');
+  const current = parseInt(lyricsEl.style.fontSize) || 20;
+  const newSize = Math.max(8, Math.min(60, current + delta));
+  lyricsEl.style.fontSize = newSize + 'px';
+}
 
-function showSong(index){index=parseInt(index);currentIndex=index;const song=songs[index];document.getElementById('songTitle').textContent=song.title;document.getElementById('songArtist').textContent=song.artist;const lyricsEl=document.getElementById('lyrics');const container=document.getElementById('lyricsContainer');const formatted=song.lyrics.trim().split('\n\n').map(s=>s.trim()).join('\n<div class="section-break"></div>\n');lyricsEl.innerHTML=formatted.replace(/\n/g,'<br>');autoSize(lyricsEl,container);if(sizeOffset!==0){const current=parseInt(lyricsEl.style.fontSize)||20;lyricsEl.style.fontSize=Math.max(8,Math.min(60,current+sizeOffset))+'px';}}
+function showSong(index) {
+  index = parseInt(index);
+  currentIndex = index;
+  sizeOffset = 0;
+  const song = songs[index];
+  document.getElementById('songTitle').textContent = song.title;
+  document.getElementById('songArtist').textContent = song.artist;
+  const lyricsEl = document.getElementById('lyrics');
+  const container = document.getElementById('lyricsContainer');
+  const formatted = song.lyrics.trim().split('\n\n').map(s => s.trim()).join('\n<div class="section-break"></div>\n');
+  lyricsEl.innerHTML = formatted.replace(/\n/g, '<br>');
+  autoSize(lyricsEl, container);
+}
 
-function autoSize(lyricsEl,container){const containerHeight=container.clientHeight;lyricsEl.classList.remove('two-col');let lo=8,hi=42,best=12;while(lo<=hi){const mid=Math.floor((lo+hi)/2);lyricsEl.style.fontSize=mid+'px';if(lyricsEl.scrollHeight<=containerHeight+2){best=mid;lo=mid+1}else{hi=mid-1}}const singleBest=best;lyricsEl.classList.add('two-col');lo=8;hi=42;let twoBest=8;while(lo<=hi){const mid=Math.floor((lo+hi)/2);lyricsEl.style.fontSize=mid+'px';if(lyricsEl.scrollHeight<=containerHeight+2){twoBest=mid;lo=mid+1}else{hi=mid-1}}if(twoBest>singleBest+1){lyricsEl.classList.add('two-col');lyricsEl.style.fontSize=twoBest+'px'}else{lyricsEl.classList.remove('two-col');lyricsEl.style.fontSize=singleBest+'px'}}
+function autoSize(lyricsEl, container) {
+  const containerHeight = container.clientHeight;
+  lyricsEl.classList.remove('two-col');
+  let lo = 8, hi = 42, best = 12;
+  while (lo <= hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    lyricsEl.style.fontSize = mid + 'px';
+    if (lyricsEl.scrollHeight <= containerHeight + 2) { best = mid; lo = mid + 1; }
+    else { hi = mid - 1; }
+  }
+  const singleBest = best;
+  lyricsEl.classList.add('two-col');
+  lo = 8; hi = 42; let twoBest = 8;
+  while (lo <= hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    lyricsEl.style.fontSize = mid + 'px';
+    if (lyricsEl.scrollHeight <= containerHeight + 2) { twoBest = mid; lo = mid + 1; }
+    else { hi = mid - 1; }
+  }
+  if (twoBest > singleBest + 1) {
+    lyricsEl.classList.add('two-col');
+    lyricsEl.style.fontSize = twoBest + 'px';
+  } else {
+    lyricsEl.classList.remove('two-col');
+    lyricsEl.style.fontSize = singleBest + 'px';
+  }
+}
 
-window.addEventListener('resize',()=>{const lyricsEl=document.getElementById('lyrics');const container=document.getElementById('lyricsContainer');autoSize(lyricsEl,container);if(sizeOffset!==0){const current=parseInt(lyricsEl.style.fontSize)||20;lyricsEl.style.fontSize=Math.max(8,Math.min(60,current+sizeOffset))+'px';}});
+window.addEventListener('resize', () => {
+  const lyricsEl = document.getElementById('lyrics');
+  const container = document.getElementById('lyricsContainer');
+  autoSize(lyricsEl, container);
+});
 
-document.addEventListener('keydown',(e)=>{if(e.key==='ArrowLeft')navigate(-1);if(e.key==='ArrowRight')navigate(1);if(e.key==='+'||e.key==='=')adjustSize(2);if(e.key==='-')adjustSize(-2)});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') navigate(-1);
+  if (e.key === 'ArrowRight') navigate(1);
+  if (e.key === '+' || e.key === '=') adjustSize(2);
+  if (e.key === '-') adjustSize(-2);
+});
 
 showSong(0);
 </script>
