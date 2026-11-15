@@ -245,6 +245,7 @@ songs.forEach((song, i) => {
 
 let currentIndex = 0;
 let sizeOffset = 0;
+let manualFontSize = null;
 
 function navigate(dir) {
   const newIndex = currentIndex + dir;
@@ -260,6 +261,7 @@ function adjustSize(delta) {
   const current = parseInt(lyricsEl.style.fontSize) || 20;
   const newSize = Math.max(8, Math.min(60, current + delta));
   lyricsEl.style.fontSize = newSize + 'px';
+manualFontSize = newSize;
 }
 
 function showSong(index) {
@@ -273,7 +275,11 @@ function showSong(index) {
   const container = document.getElementById('lyricsContainer');
   const formatted = song.lyrics.trim().split('\n\n').map(s => s.trim()).join('\n<div class="section-break"></div>\n');
   lyricsEl.innerHTML = formatted.replace(/\n/g, '<br>');
-  autoSize(lyricsEl, container);
+  if (manualFontSize !== null) {
+lyricsEl.style.fontSize = manualFontSize + 'px';
+} else {
+autoSize(lyricsEl, container);
+}
 }
 
 function autoSize(lyricsEl, container) {
